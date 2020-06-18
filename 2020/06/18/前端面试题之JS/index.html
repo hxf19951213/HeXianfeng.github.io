@@ -8,13 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>前端面试题之JS | 何贤锋的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="这些大概是高频考点，有些特别需要单独提出来说的，有些特别需要研究的，单独写一些博客吧。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="前端面试题之JS">
 <meta property="og:url" content="http://yoursite.com/2020/06/18/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B9%8BJS/index.html">
 <meta property="og:site_name" content="何贤锋的博客">
+<meta property="og:description" content="这些大概是高频考点，有些特别需要单独提出来说的，有些特别需要研究的，单独写一些博客吧。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-18T06:51:27.000Z">
-<meta property="article:modified_time" content="2020-06-18T06:51:27.772Z">
+<meta property="article:modified_time" content="2020-06-18T08:54:11.673Z">
 <meta property="article:author" content="何贤锋">
 <meta name="twitter:card" content="summary">
   
@@ -162,7 +164,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>这些大概是高频考点，有些特别需要单独提出来说的，有些特别需要研究的，单独写一些博客吧。</p>
+<a id="more"></a>
+
+<h3 id="1-this的原理-怎么保护普通函数this指向？用什么方法能修改this指向？apply，call，bind的区别？"><a href="#1-this的原理-怎么保护普通函数this指向？用什么方法能修改this指向？apply，call，bind的区别？" class="headerlink" title="1.this的原理?怎么保护普通函数this指向？用什么方法能修改this指向？apply，call，bind的区别？"></a>1.this的原理?怎么保护普通函数this指向？用什么方法能修改this指向？apply，call，bind的区别？</h3><h5 id="this的原理"><a href="#this的原理" class="headerlink" title="this的原理"></a>this的原理</h5><p>​    随着函数使用场合的不同this的值会发生变化，具体就是this是<strong>谁调用就指向谁</strong>。</p>
+<h5 id="怎么保护this指向"><a href="#怎么保护this指向" class="headerlink" title="怎么保护this指向"></a>怎么保护this指向</h5><p>​    用me = this</p>
+<p>​    用箭头函数</p>
+<h5 id="用什么方法能修改this指向"><a href="#用什么方法能修改this指向" class="headerlink" title="用什么方法能修改this指向"></a>用什么方法能修改this指向</h5><h3 id="2-原型什么？有什么用"><a href="#2-原型什么？有什么用" class="headerlink" title="2.原型什么？有什么用"></a>2.原型什么？有什么用</h3><p>​    JavaScript 种通过原型实现继承的语言，JavaScr ipt的对象中都包含了一个 <strong>prototype</strong> 内部属性，这个属性所对应的就是该对象的原型，作为对象的内部属性 prototype是<strong>不能直接访问的</strong> 所以，为了方便查看对象的原型，引擎中提供了<strong>__</strong>poto______这个非标准的访问器</p>
+<h3 id="3-原型链是什么？"><a href="#3-原型链是什么？" class="headerlink" title="3.原型链是什么？"></a>3.原型链是什么？</h3><p>​    当通过构造函数产生实例对象，实例对象可以使用原型对象中的属性和方法，原型对象也是对象，原型对象也有自己的原型对象，依次类推，形成一种链式结构。这种链式结构称之为原型链。当我们调用对象中的属性和方法，则会去指定对象中查找对应的属性和方法，如果<strong>找到了则直接使用</strong>，如果<strong>找不到则去原型对象中查找</strong>，找到了则使用，找不到则依次类推去原型对象的原型对象中查找，找到则使用，最终去 Object.prototype <strong>找不到则为undefined</strong>，称之为原型链查找</p>
+<h3 id="4-New执行的全过程？"><a href="#4-New执行的全过程？" class="headerlink" title="4.New执行的全过程？"></a>4.New执行的全过程？</h3><p>1.创建1个新的对象 这个对象的类型是 object </p>
+<p>2.将this 变量指向该对象。 </p>
+<p>3.将对象的原型指向该构造函数的原型 </p>
+<p>4.执行构造函数，通 this 对象，为实例化对象添加自身属性方法 </p>
+<p>5.将 this 引用的新创建的对象返回</p>
+<h3 id="5-js怎么定义类，如何实现继承，es6中如何实现继承？"><a href="#5-js怎么定义类，如何实现继承，es6中如何实现继承？" class="headerlink" title="5.js怎么定义类，如何实现继承，es6中如何实现继承？"></a>5.js怎么定义类，如何实现继承，es6中如何实现继承？</h3><p>​    es6之前定义类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es6之前定义类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化对象</span></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> People(<span class="string">'xiaoming'</span>, <span class="number">12</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p)</span><br></pre></td></tr></table></figure>
+
+<p>es6通过<strong>class</strong>定义类，定义的对象里面写原型数据，通过<strong>constructo</strong>方法定义自身数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 通过constructor定义自身数据</span></span><br><span class="line">    <span class="keyword">constructor</span>(name, age, sex) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">        <span class="comment">// 方法</span></span><br><span class="line">        <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'nihao'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//  定义原型方法</span></span><br><span class="line">    getName() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化对象</span></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> People(<span class="string">'xiaoming'</span>, <span class="number">12</span>, <span class="string">'男'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>es6之前实现继承</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以后补充</span><br></pre></td></tr></table></figure>
+
+<p>es6通过<strong>extends</strong>实现继承，子类通过<strong>super</strong>设定特有属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 通过constructor定义自身数据</span></span><br><span class="line">    <span class="keyword">constructor</span>(name, age, sex) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义原型方法</span></span><br><span class="line">    <span class="keyword">static</span> getAge() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  定义原型方法</span></span><br><span class="line">    getName() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Students</span> <span class="keyword">extends</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 重写构造函数 (构造函数式继承)</span></span><br><span class="line">    <span class="keyword">constructor</span>(name, age, sex, grade) &#123;</span><br><span class="line">        <span class="comment">// 通过super关键字实现继承</span></span><br><span class="line">        <span class="keyword">super</span>( age, name, sex);</span><br><span class="line">        <span class="comment">// 子类特有的数据 一定义定义在super关键字之下</span></span><br><span class="line">        <span class="comment">// this.grade = grade;</span></span><br><span class="line">        <span class="keyword">this</span>.sex = grade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化对象</span></span><br><span class="line"><span class="keyword">let</span> xiaobai = <span class="keyword">new</span> Students(<span class="string">'xiaobai'</span>, <span class="number">12</span>, <span class="string">'男'</span>, <span class="number">6</span>);</span><br><span class="line"><span class="keyword">let</span> laji = <span class="keyword">new</span> People(<span class="string">'laji'</span>, <span class="number">12</span>, <span class="string">'男'</span>, <span class="number">6</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(laji)</span><br><span class="line"><span class="built_in">console</span>.log(xiaobai)</span><br><span class="line"><span class="built_in">console</span>.log(People)</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-闭包是什么？闭包的优缺点？如何实现闭包？闭包在什么时候使用？"><a href="#6-闭包是什么？闭包的优缺点？如何实现闭包？闭包在什么时候使用？" class="headerlink" title="6.闭包是什么？闭包的优缺点？如何实现闭包？闭包在什么时候使用？"></a>6.闭包是什么？闭包的优缺点？如何实现闭包？闭包在什么时候使用？</h3><h5 id="闭包是什么"><a href="#闭包是什么" class="headerlink" title="闭包是什么"></a>闭包是什么</h5><p>​    闭包指的是有权访问<strong>另一个</strong>函数作用域中的变量的函数</p>
+<h5 id="闭包的优缺点"><a href="#闭包的优缺点" class="headerlink" title="闭包的优缺点"></a>闭包的优缺点</h5><p>​    使用闭包主要是为了设计<strong>私有的</strong>方法和变量。 闭包的优点是可以<strong>避免全局变量的污染</strong>；缺点是闭包会常驻内存， <strong>增加内存使用量</strong>，使用不当很容易造成内存泄漏。</p>
+<h5 id="如何实现闭包"><a href="#如何实现闭包" class="headerlink" title="如何实现闭包"></a>如何实现闭包</h5><p>​    在一个函数内使用外部函数的变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(++a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fun;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> res = demo();</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="什么时候用闭包"><a href="#什么时候用闭包" class="headerlink" title="什么时候用闭包"></a>什么时候用闭包</h5><p>闭包最重要的一个作用就是把<strong>某些变量隐藏起来</strong>，让外面的程序不能直接访问。 </p>
+<h3 id="7-事件委托是什么？事件委托的优点是什么？如何实现事件委托"><a href="#7-事件委托是什么？事件委托的优点是什么？如何实现事件委托" class="headerlink" title="7.事件委托是什么？事件委托的优点是什么？如何实现事件委托"></a>7.事件委托是什么？事件委托的优点是什么？如何实现事件委托</h3><h5 id="事件委托是什么"><a href="#事件委托是什么" class="headerlink" title="事件委托是什么"></a>事件委托是什么</h5><p>​    事件委托就是利用事件冒泡，<strong>把子元素的事件委托给父元素</strong>，就可以管理某一类型的所有事件。</p>
+<h5 id="事件委托的优点"><a href="#事件委托的优点" class="headerlink" title="事件委托的优点"></a>事件委托的优点</h5><p>​    比如有很多li元素都要绑定点击事件，就需要遍历每个li，这样就会不断的与dom节点进行交互，影响性能。</p>
+<h5 id="如何实现事件委托"><a href="#如何实现事件委托" class="headerlink" title="如何实现事件委托"></a>如何实现事件委托</h5><p>​    给父元素绑定事件，通过Event事件对象提供了一个属性叫target，可以返回事件的目标节点，确定事件源来执行函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以后补充</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><code>未完待续......</code></p>
+
       
 
       
