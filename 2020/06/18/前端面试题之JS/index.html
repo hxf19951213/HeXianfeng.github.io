@@ -16,7 +16,7 @@
 <meta property="og:description" content="这些大概是高频考点，有些特别需要单独提出来说的，有些特别需要研究的，单独写一些博客吧。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-18T06:51:27.000Z">
-<meta property="article:modified_time" content="2020-06-18T08:54:11.673Z">
+<meta property="article:modified_time" content="2020-06-19T06:08:34.371Z">
 <meta property="article:author" content="何贤锋">
 <meta name="twitter:card" content="summary">
   
@@ -170,7 +170,13 @@
 <h3 id="1-this的原理-怎么保护普通函数this指向？用什么方法能修改this指向？apply，call，bind的区别？"><a href="#1-this的原理-怎么保护普通函数this指向？用什么方法能修改this指向？apply，call，bind的区别？" class="headerlink" title="1.this的原理?怎么保护普通函数this指向？用什么方法能修改this指向？apply，call，bind的区别？"></a>1.this的原理?怎么保护普通函数this指向？用什么方法能修改this指向？apply，call，bind的区别？</h3><h5 id="this的原理"><a href="#this的原理" class="headerlink" title="this的原理"></a>this的原理</h5><p>​    随着函数使用场合的不同this的值会发生变化，具体就是this是<strong>谁调用就指向谁</strong>。</p>
 <h5 id="怎么保护this指向"><a href="#怎么保护this指向" class="headerlink" title="怎么保护this指向"></a>怎么保护this指向</h5><p>​    用me = this</p>
 <p>​    用箭头函数</p>
-<h5 id="用什么方法能修改this指向"><a href="#用什么方法能修改this指向" class="headerlink" title="用什么方法能修改this指向"></a>用什么方法能修改this指向</h5><h3 id="2-原型什么？有什么用"><a href="#2-原型什么？有什么用" class="headerlink" title="2.原型什么？有什么用"></a>2.原型什么？有什么用</h3><p>​    JavaScript 种通过原型实现继承的语言，JavaScr ipt的对象中都包含了一个 <strong>prototype</strong> 内部属性，这个属性所对应的就是该对象的原型，作为对象的内部属性 prototype是<strong>不能直接访问的</strong> 所以，为了方便查看对象的原型，引擎中提供了<strong>__</strong>poto______这个非标准的访问器</p>
+<h5 id="用什么方法能修改this指向"><a href="#用什么方法能修改this指向" class="headerlink" title="用什么方法能修改this指向"></a>用什么方法能修改this指向</h5><p>​    用new改变this指向</p>
+<p>​    用apply(), call(), bind()改变this指向</p>
+<h5 id="apply，call，bind的区别"><a href="#apply，call，bind的区别" class="headerlink" title="apply，call，bind的区别"></a>apply，call，bind的区别</h5><p> 三个函数的第一个参数都是 this 的指向对象 </p>
+<p>apply()的参数是数组</p>
+<p>call ()的参数是直接放进去的，第二第三第 n 个参数全都用逗号分隔</p>
+<p>bind ()除了返回是函数以外，它 的参数和 call 一样。</p>
+<h3 id="2-原型什么？有什么用"><a href="#2-原型什么？有什么用" class="headerlink" title="2.原型什么？有什么用"></a>2.原型什么？有什么用</h3><p>​    JavaScript 种通过原型实现继承的语言，JavaScr ipt的对象中都包含了一个 <strong>prototype</strong> 内部属性，这个属性所对应的就是该对象的原型，作为对象的内部属性 prototype是<strong>不能直接访问的</strong> 所以，为了方便查看对象的原型，引擎中提供了<strong>__</strong>poto______这个非标准的访问器</p>
 <h3 id="3-原型链是什么？"><a href="#3-原型链是什么？" class="headerlink" title="3.原型链是什么？"></a>3.原型链是什么？</h3><p>​    当通过构造函数产生实例对象，实例对象可以使用原型对象中的属性和方法，原型对象也是对象，原型对象也有自己的原型对象，依次类推，形成一种链式结构。这种链式结构称之为原型链。当我们调用对象中的属性和方法，则会去指定对象中查找对应的属性和方法，如果<strong>找到了则直接使用</strong>，如果<strong>找不到则去原型对象中查找</strong>，找到了则使用，找不到则依次类推去原型对象的原型对象中查找，找到则使用，最终去 Object.prototype <strong>找不到则为undefined</strong>，称之为原型链查找</p>
 <h3 id="4-New执行的全过程？"><a href="#4-New执行的全过程？" class="headerlink" title="4.New执行的全过程？"></a>4.New执行的全过程？</h3><p>1.创建1个新的对象 这个对象的类型是 object </p>
 <p>2.将this 变量指向该对象。 </p>
@@ -216,25 +222,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p><code>未完待续......</code></p>
+<h3 id="8-get和post的区别"><a href="#8-get和post的区别" class="headerlink" title="8.get和post的区别"></a>8.get和post的区别</h3><p>​    GET：一般用于信息获取，使用URL传递参数，对所发送信息的数量也有限制，一般在2000个字符</p>
+<p>​    POST：一般用于修改服务器上的资源，对所发送的信息没有限制。<br>​    GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值，也就是说Get是通过地址栏来传值，而Post是通过提交表单来传值。</p>
+<p>​    然而，在以下情况中，请使用 POST 请求：<br>​        无法使用缓存文件（更新服务器上的文件或数据库）<br>​        向服务器发送大量数据（POST 没有数据量限制）</p>
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h3 id="1-Let是什么？Let解决了什么问题？Const是什么？Const解决了什么问题"><a href="#1-Let是什么？Let解决了什么问题？Const是什么？Const解决了什么问题" class="headerlink" title="1.Let是什么？Let解决了什么问题？Const是什么？Const解决了什么问题?"></a>1.Let是什么？Let解决了什么问题？Const是什么？Const解决了什么问题?</h3><p><code>未完待续......</code></p>
 
       
 
